@@ -1,0 +1,270 @@
+/* General Body Styling */
+body {
+    background-color: #0d0d0d; /* Dark background */
+    color: #ffffff; /* Neon white text */
+    font-family: 'Press Start 2P', cursive; /* Retro arcade font */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.container {
+    text-align: center;
+    padding: 20px;
+    max-width: 600px;
+    background: linear-gradient(145deg, #212121, #1a1a1a);
+    border: 5px solid #ff00ff; /* Neon purple border */
+    box-shadow: 0px 0px 30px #ff00ff;
+    border-radius: 15px;
+}
+
+/* Headings */
+h1, h2 {
+    color: #00ffff; /* Neon blue */
+    text-shadow: 0px 0px 10px #00ffff, 0px 0px 20px #00ffff;
+}
+
+/* Word Display */
+.word-display p {
+    font-size: 24px;
+    letter-spacing: 8px;
+    color: #ff00ff;
+    text-shadow: 0px 0px 10px #ff00ff, 0px 0px 20px #ff00ff;
+}
+
+/* Hint Box */
+.hint-box p {
+    font-size: 18px;
+    color: #00ff00; /* Neon green */
+    text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+    margin: 10px 0;
+}
+
+/* Input and Button Styling */
+.input-box input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    background: #1a1a1a; /* Dark background */
+    color: #ffffff; /* White text */
+    text-shadow: 0px 0px 10px #ffffff; /* Neon effect for text */
+    width: 50%;
+    margin-right: 10px;
+    text-transform: uppercase; /* Ensure input text is uppercase */
+}
+
+.input-box input:focus {
+    outline: none;
+    border-color: #00ff00; /* Neon green border on focus */
+    box-shadow: 0px 0px 15px #00ff00; /* Green glow */
+}
+
+.input-box input::placeholder {
+    color: #888888; /* Light gray placeholder text */
+    text-shadow: 0px 0px 5px #888888; /* Subtle neon effect */
+    text-transform: uppercase; /* Ensure placeholder text is uppercase */
+}
+
+.input-box button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-shadow: 0px 0px 10px #ffffff;
+    transition: transform 0.2s ease, background 0.3s;
+}
+
+.input-box button:hover {
+    transform: scale(1.1);
+    background: #00ff00;
+}
+
+/* Attempts Left */
+.attempts-left {
+    font-size: 16px;
+    color: #ff4500; /* Neon orange */
+    text-shadow: 0px 0px 10px #ff4500, 0px 0px 20px #ff4500;
+    margin-top: 10px;
+}
+
+/* Feedback Section */
+.feedback {
+    margin-top: 20px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.feedback p {
+    color: #00ff00; /* Green for correct guesses */
+    text-shadow: 0px 0px 10px #00ff00;
+    animation: glow 1s infinite alternate;
+}
+
+.feedback .wrong {
+    color: #ff0000; /* Red for wrong guesses */
+    text-shadow: 0px 0px 10px #ff0000;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+}
+
+/* Game Over Screen */
+.game-over {
+    text-align: center;
+    margin-top: 50px;
+    color: #00ff00;
+    text-shadow: 0px 0px 10px #00ff00;
+}
+
+.game-over h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    animation: glow 1s infinite alternate;
+}
+
+.game-over p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.game-over button {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background: #ff00ff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background 0.3s;
+}
+
+.game-over button:hover {
+    background: #800080;
+}
+
+/* Username Input */
+.username-input {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.username-input h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.username-input-field {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 16px;
+    padding: 10px;
+    border: 2px solid #00ff00;
+    background: #1a1a1a;
+    color: #ffffff;
+    width: 50%;
+    margin-bottom: 20px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.username-input-field::placeholder {
+    color: #888888;
+    text-shadow: 0px 0px 5px #888888;
+}
+
+.username-input button {
+    font-size: 16px;
+    padding: 10px 20px;
+    color: #ffffff;
+    background: #00ff00;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    margin: 10px;
+    transition: background 0.3s;
+}
+
+.username-input button:hover {
+    background: #008000;
+}
+
+/* Error Message */
+.error-message {
+    color: #ff0000;
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+/* Leaderboard Styling */
+.leaderboard {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.leaderboard table {
+    width: 80%;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+.leaderboard th, .leaderboard td {
+    border: 2px solid #ff00ff;
+    padding: 10px;
+    text-align: center;
+}
+
+.leaderboard th {
+    background-color: #1a1a1a;
+    color: #00ffff; /* Neon blue */
+}
+
+.leaderboard td {
+    background-color: #0d0d0d;
+    color: #ffffff; /* White text */
+}
+
+.leaderboard tr:nth-child(odd) td {
+    background-color: #1a1a1a;
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Music Toggle */
+.music-toggle {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background: #00ff00;
+    border: none;
+    color: #ffffff;
+    padding: 10px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.music-toggle:hover {
+    background: #008000;
+}
