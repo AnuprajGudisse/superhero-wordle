@@ -1,12 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './GameBoard.css';
 
+// Import sound files
+import correctSound from '../assets/sounds/correct.wav';
+import wrongSound from '../assets/sounds/wrong.wav';
+import clickSound from '../assets/sounds/click.wav';
+import gameoverSound from '../assets/sounds/gameover.wav';
+
 const GameBoard = ({ superhero, hints, onScoreUpdate, onGameOver, lives, setLives }) => {
     const [currentGuess, setCurrentGuess] = useState('');
     const [hintIndex, setHintIndex] = useState(0); // Start with the first hint
     const [feedback, setFeedback] = useState(''); // Feedback for the user
     const [hintsLeft, setHintsLeft] = useState(5); // 🔥 Start with 5 hints
     const [hintPenalty, setHintPenalty] = useState(0); // 🔥 Tracks penalty points
+
+    // Load sounds
+    const playSound = (sound) => {
+        const audio = new Audio(sound);
+        audio.play();
+    };
 
     useEffect(() => {
         // Reset hints & penalty when a new word is loaded
@@ -25,15 +37,19 @@ const GameBoard = ({ superhero, hints, onScoreUpdate, onGameOver, lives, setLive
         if (currentGuess === superhero.toUpperCase()) {
             const baseScore = 10; // Max score
             const finalScore = Math.max(0, baseScore - hintPenalty); // 🔥 Deduct penalty points
-
+            
+            playSound(correctSound); // ✅ Play correct answer sound
             setFeedback(`🎉 Correct! You scored ${finalScore} points!`);
             onScoreUpdate(finalScore); // Update score
             setHintsLeft(5); // 🔥 Reset hints for the next word
             setHintPenalty(0); // 🔥 Reset penalty
         } else {
+            playSound(wrongSound); // ✅ Play wrong answer sound
             setFeedback('❌ Wrong! Try again.');
             setLives(lives - 1); // Reduce a life
+
             if (lives - 1 <= 0) {
+                playSound(gameoverSound); // ✅ Play game over sound
                 setFeedback(`💀 Game Over! The answer was: ${superhero}`);
                 onGameOver();
             }
@@ -44,6 +60,7 @@ const GameBoard = ({ superhero, hints, onScoreUpdate, onGameOver, lives, setLive
     // Reveal the next hint when clicked
     const handleHintClick = () => {
         if (hintsLeft > 0 && hintIndex < hints.length - 1) {
+            playSound(clickSound); // ✅ Play click sound
             setHintIndex(hintIndex + 1); // Show the next hint
             setHintsLeft(hintsLeft - 1); // Reduce hints available
             setHintPenalty(hintPenalty + 2); // 🔥 Deduct 2 points per hint
@@ -59,7 +76,7 @@ const GameBoard = ({ superhero, hints, onScoreUpdate, onGameOver, lives, setLive
             <div className="hint-box">
                 <p>🔍 Hint: {hints[hintIndex]}</p>
                 <button onClick={handleHintClick} disabled={hintsLeft <= 0}>
-                    Get Hint {hintsLeft > 0 ? `(${hintsLeft} left)` : "(No hints left)"}
+                    Get Hint (-2 Points) {hintsLeft > 0 ? `(${hintsLeft} left)` : "(No hints left)"}
                 </button>
             </div>
 
@@ -77,7 +94,6 @@ const GameBoard = ({ superhero, hints, onScoreUpdate, onGameOver, lives, setLive
             <div className="feedback">
                 <p className={feedback.includes('Correct') ? 'correct' : 'wrong'}>{feedback}</p>
             </div>
-
         </div>
     );
 };

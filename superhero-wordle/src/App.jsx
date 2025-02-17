@@ -56,9 +56,13 @@ const App = () => {
         return shuffled;
     };
 
-    // Toggle background music
-    const handleMusicToggle = () => {
-        const audio = document.getElementById('bg-music');
+// Toggle background music with reduced volume
+const handleMusicToggle = () => {
+    const audio = document.getElementById('bg-music');
+
+    if (audio) {
+        audio.volume = 0.5; // 🔥 Set volume (0.0 = mute, 1.0 = full volume)
+        
         if (isPlaying) {
             audio.pause();
             setIsPlaying(false);
@@ -66,7 +70,9 @@ const App = () => {
             audio.play();
             setIsPlaying(true);
         }
-    };
+    }
+};
+
 
     // Handle New User
     const handleStartGame = () => {
@@ -207,6 +213,7 @@ const App = () => {
                         hints={shuffledHeroes[round]?.hints || []} // Ensure hints exist
                         onScoreUpdate={handleScoreUpdate}
                         onGameOver={() => setGameOver(true)}
+                        lives={lives} // 🔥 NEW: Pass lives to GameBoard
                         setLives={handleLivesUpdate} // Allow GameBoard to update lives
                     />
                     <p>Total Score: {totalScore}</p>
