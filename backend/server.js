@@ -29,7 +29,7 @@ db.run(`
     )
 `);
 
-// Add a Player's Score
+// Add a Player's Score & Return Updated Leaderboard
 app.post('/add-score', (req, res) => {
     const { name, score } = req.body;
     if (!name || score === undefined) {
@@ -42,11 +42,19 @@ app.post('/add-score', (req, res) => {
             if (err) {
                 res.status(500).json({ error: 'Failed to save score.' });
             } else {
-                res.json({ success: true, id: this.lastID });
+                // Fetch updated leaderboard after inserting score
+                db.all(`SELECT name, score FROM scores ORDER BY score DESC LIMIT 10`, [], (err, rows) => {
+                    if (err) {
+                        res.status(500).json({ error: 'Failed to retrieve updated leaderboard.' });
+                    } else {
+                        res.json({ success: true, leaderboard: rows });
+                    }
+                });
             }
         }
     );
 });
+
 
 // Get Leaderboard
 app.get('/leaderboard', (req, res) => {

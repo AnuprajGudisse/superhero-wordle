@@ -22,6 +22,7 @@ const Leaderboard = () => {
     return (
         <div className="leaderboard">
             <h2>Leaderboard</h2>
+            <button onClick={fetchLeaderboard}>🔄 Refresh</button> {/* ✅ Add Manual Refresh Button */}
             <table>
                 <thead>
                     <tr>
@@ -31,13 +32,19 @@ const Leaderboard = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {leaderboard.map((entry, index) => (
-                        <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{entry.name}</td>
-                            <td>{entry.score}</td>
+                    {leaderboard.length > 0 ? (
+                        leaderboard.map((entry, index) => (
+                            <tr key={index}>
+                                <td>{index + 1}</td>
+                                <td>{entry.name}</td>
+                                <td>{entry.score}</td>
+                            </tr>
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="3">No scores yet</td>
                         </tr>
-                    ))}
+                    )}
                 </tbody>
             </table>
         </div>

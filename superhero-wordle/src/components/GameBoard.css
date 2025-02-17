@@ -1,0 +1,108 @@
+.game-board {
+    text-align: center;
+    margin-top: 20px;
+    font-family: 'Press Start 2P', cursive;
+    color: #ffffff;
+}
+
+.word-display p {
+    font-size: 24px;
+    letter-spacing: 8px;
+    color: #ff00ff; /* Neon purple */
+    text-shadow: 0px 0px 10px #ff00ff, 0px 0px 20px #ff00ff;
+    margin-bottom: 20px;
+}
+
+
+
+.input-box input {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 18px;
+    padding: 10px;
+    border: 2px solid #ff00ff;
+    border-radius: 5px;
+    background: #1a1a1a; /* Dark background */
+    color: #ffffff; /* White text */
+    text-shadow: 0px 0px 10px #ffffff;
+    text-align: center;
+    width: 60%;
+    margin-right: 10px;
+}
+
+.input-box input::placeholder {
+    color: #888888;
+    text-shadow: 0px 0px 5px #888888;
+}
+
+.input-box button {
+    font-size: 18px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-shadow: 0px 0px 10px #ffffff;
+    transition: transform 0.2s ease, background 0.3s;
+}
+
+.input-box button:hover {
+    transform: scale(1.1);
+    background: #00ff00; /* Neon green */
+}
+
+.feedback p {
+    font-size: 20px;
+    margin-top: 20px;
+    text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+    animation: glow 1s infinite alternate;
+}
+
+.feedback .wrong {
+    color: #ff0000; /* Red for wrong guesses */
+    text-shadow: 0px 0px 10px #ff0000, 0px 0px 20px #ff0000;
+}
+
+.attempts-left p {
+    font-size: 16px;
+    color: #ff4500; /* Neon orange */
+    text-shadow: 0px 0px 10px #ff4500, 0px 0px 20px #ff4500;
+    margin-top: 10px;
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
+    }
+    to {
+        text-shadow: 0 0 20px #00ff00, 0 0 30px #00ff00;
+    }
+}
+
+.hint-box {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.hint-box p {
+    font-size: 18px;
+    color: #00ff00; /* Neon green */
+    text-shadow: 0px 0px 10px #00ff00, 0px 0px 20px #00ff00;
+}
+
+.hint-box button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background: #ff00ff;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    cursor: pointer;
+    text-shadow: 0px 0px 10px #ffffff;
+    transition: transform 0.2s ease;
+}
+
+.hint-box button:hover {
+    transform: scale(1.1);
+    background: #ff4500; /* Orange to indicate cost */
+}
