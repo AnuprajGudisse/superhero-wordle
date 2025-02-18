@@ -1,17 +1,10 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
-    plugins: [
-        react(),
-        viteStaticCopy({
-            targets: [
-                {
-                    src: 'src/assets/sounds/*',
-                    dest: 'sounds',
-                },
-            ],
-        }),
-    ],
+  plugins: [react()],
+  base: '/superhero-wordle/', // ✅ Replace with your GitHub repo name
+  build: {
+    outDir: 'dist', // ✅ Ensure the build output goes to 'dist'
+  },
 });
